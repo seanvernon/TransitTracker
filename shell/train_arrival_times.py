@@ -25,7 +25,7 @@ def arrivals_at_station(station, key):
     arr_lst = []
     for eta in etas:    
         station_name = eta[2].text 
-        line = eta[5].text
+        line = f"{eta[5].text} Line"
         stop_desc = eta[3].text
         pred_t = convert_timestamp(eta[9].text)
         arr_t = convert_timestamp(eta[10].text)

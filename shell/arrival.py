@@ -10,4 +10,4 @@ class Arrival:
     # Returns a string representing this arrival object.
     def __str__(self):
         wait_string = f"{self.wait_time} minutes" if self.wait_time > 1 else "Due"
-        return f"{self.station_name}\n{self.line} Line {self.stop_desc}\n{wait_string}\n"
+        return f"{self.station_name}\n{self.line} {self.stop_desc}\n{wait_string}\n"
