@@ -22,4 +22,4 @@ have different stop codes.
 
 Usage: `python shell/bus_arrival_times.py <route> <stop_code> <stop_code> ...`
 
-A complete list of bus stop codes is available [in the CTA GTFS dataset](https://www.transitchicago.com/downloads/sch_data/).
+A complete list of bus stop codes is available [by searching for the desired line and checking the Bus Stop List](https://www.transitchicago.com/schedules/).
