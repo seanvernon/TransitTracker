@@ -42,10 +42,10 @@ def convert_timestamp(api_ts):
 if __name__ == "__main__":
 
     if (len(sys.argv) == 1) or (sys.argv[1] == "-h") or (sys.argv[1] == "--help"):
-        print("usage: python bus_arrival_times.py <route> <stop code> <stop code> ...")
+        print("usage: python shell/bus_arrival_times.py <route> <stop code> <stop code> ...")
 
     else:
-        with open("../api/bus_api_key.txt", 'r') as file:
+        with open("./api/bus_api_key.txt", 'r') as file:
             BUS_KEY = file.readline()[:-1]
 
         route = sys.argv[1]

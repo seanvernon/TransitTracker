@@ -42,10 +42,10 @@ def convert_timestamp(api_ts):
 if __name__ == "__main__":
 
     if (sys.argv[1] == "-h") or (sys.argv[1] == "--help"):
-        print("usage: python train_arrival_times.py <station code>")
+        print("usage: python shell/train_arrival_times.py <station code>")
 
     else:
-        with open("../api/train_api_key.txt", 'r') as file:
+        with open("./api/train_api_key.txt", 'r') as file:
             TRAIN_KEY = file.readline()[:-1]
 
         station = sys.argv[1]
