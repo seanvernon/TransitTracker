@@ -27,4 +27,8 @@ A complete list of bus stop codes is available [by searching for the desired lin
 
 ## GUI
 
-The GUI is powered by [pygame](https://www.pygame.org/news). Edit the globals in gui/utils, then run the GUI with python gui/main.py.
+The GUI is powered by [pygame](https://www.pygame.org/news). Edit the globals in `gui/utils`, then run the GUI with `python gui/main.py`.
+
+![An example of the GUI.](./gui/resources/example.png)
+
+TODO: Add airplane icons for O'Hare- and Midway-bound trains.
