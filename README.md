@@ -1,6 +1,6 @@
 # TransitTracker
 
-Shell and GUI utilities to display train and bus arrival times along the CTA system.
+Shell and GUI utilities to display train and bus arrival times along the CTA system. Data provided by CTA Train/Bus Tracker.
 
 ## Shell utilities
 
@@ -23,3 +23,8 @@ have different stop codes.
 Usage: `python shell/bus_arrival_times.py <route> <stop_code> <stop_code> ...`
 
 A complete list of bus stop codes is available [by searching for the desired line and checking the Bus Stop List](https://www.transitchicago.com/schedules/).
+
+
+## GUI
+
+The GUI is powered by [pygame](https://www.pygame.org/news). Edit the globals in gui/utils, then run the GUI with python gui/main.py.
