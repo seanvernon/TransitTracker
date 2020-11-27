@@ -212,12 +212,13 @@ def main(train_key, bus_key, station_ids, route_id_dict):
                 last_draw_time = now
 
                 # Update curr_top_card if on last card
-                if (curr_top_card + 1 >= len(arrivals)):
+                curr_top_card += 2
+                if (curr_top_card >= len(arrivals)):
                     # If new arrivals, update that too
                     if (len(next_arrivals) > 0):
                         arrivals = next_arrivals
                         next_arrivals = []
-                curr_top_card = (curr_top_card + 2) % len(arrivals)
+                    curr_top_card = 0
 
             else:
                 if now - last_draw_time > 10:
