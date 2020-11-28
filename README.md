@@ -2,6 +2,8 @@
 
 Shell and GUI utilities to display train and bus arrival times along the CTA system. Data provided by CTA Train/Bus Tracker.
 
+To use these utilities, you must request API keys for [CTA Train Tracker](https://www.transitchicago.com/developers/traintrackerapply/) and [CTA Bus Tracker](https://www.transitchicago.com/developers/bustracker/). Place these keys in two .txt files: one in `api/train_api_key.txt`, the other in `api/bus_api_key.txt`.
+
 ## Shell utilities
 
 ### Train Tracker
@@ -31,4 +33,4 @@ The GUI is powered by [pygame](https://www.pygame.org/news). Edit the globals in
 
 ![An example of the GUI.](./gui/resources/example.png)
 
-TODO: Add airplane icons for O'Hare- and Midway-bound trains.
+TODO: Add airplane icons for O'Hare- and Midway-bound trains, and add the Customer Alerts API to display service problems.
