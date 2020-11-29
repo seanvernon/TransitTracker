@@ -186,7 +186,11 @@ def main(train_key, bus_key, station_ids, route_id_dict):
                 done = True
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_f:
-                    pygame.display.toggle_fullscreen()
+                    pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+                elif event.key == pygame.K_ESCAPE:
+                    pygame.display.set_mode(window_size)
+                elif event.key == pygame.K_q:
+                    done = True
 
         now = pygame.time.get_ticks()
 

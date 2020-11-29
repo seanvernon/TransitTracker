@@ -33,4 +33,6 @@ The GUI is powered by [pygame](https://www.pygame.org/news). Edit the globals in
 
 ![An example of the GUI.](./gui/resources/example.png)
 
+Press "f" to enter fullscreen, "ESC" to exit fullscreen, and "q" to quit.
+
 TODO: Add airplane icons for O'Hare- and Midway-bound trains, and add the Customer Alerts API to display service problems.
