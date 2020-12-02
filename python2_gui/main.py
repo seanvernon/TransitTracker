@@ -3,7 +3,7 @@ from card import Card
 from train_arrival import TrainArrival
 from utils import COLORS, FONTS, ROUTE_ID_DICT, STATION_IDS, WIDTH
 
-from urllib.request import urlopen
+from urllib import urlopen
 
 import datetime
 import pygame
@@ -11,7 +11,7 @@ import xml.etree.ElementTree as ET
 
 def bus_arrivals(route, stop, key):
     URL_BASE = "http://www.ctabustracker.com/bustime/api/v1/getpredictions"
-    arr_xml = urlopen(f"{URL_BASE}?key={key}&rt={route}&stpid={stop}")
+    arr_xml = urlopen(URL_BASE+"?key="+key+"&rt="+route+"&stpid="+stop)
     arr_xml = ET.parse(arr_xml)
 
     etas = []
@@ -34,7 +34,7 @@ def bus_arrivals(route, stop, key):
 
 def train_arrivals(station, key):
     URL_BASE = "http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx"
-    arr_xml = urlopen(f"{URL_BASE}?key={key}&mapid={station}")
+    arr_xml = urlopen(URL_BASE+"?key="+key+"&mapid="+station)
     arr_xml = ET.parse(arr_xml)
 
     etas = []
@@ -43,7 +43,7 @@ def train_arrivals(station, key):
             etas.append(child)
         elif child.tag == "errCd":
             if child.text != "0":
-                print(f"API Error {child.text}")
+                print("API Error "+child.text)
                 return []
 
     arr_lst = []
@@ -58,8 +58,12 @@ def train_arrivals(station, key):
     return arr_lst
 
 def convert_timestamp(api_ts):
-    api_ts = api_ts[:4] + "-" + api_ts[4:6] + "-" + api_ts[6:]
-    return datetime.datetime.fromisoformat(api_ts)
+    if len(api_ts) == 17:
+        return datetime.datetime(int(api_ts[:4]), int(api_ts[4:6]), int(api_ts[6:8]),\
+                                 int(api_ts[9:11]), int(api_ts[12:14]), int(api_ts[15:17]))
+    else:
+        return datetime.datetime(int(api_ts[:4]), int(api_ts[4:6]), int(api_ts[6:8]),\
+                                 int(api_ts[9:11]), int(api_ts[12:14]))
 
 def draw_text(display, text, x, y, size, color, bold=False):
     if bold:
@@ -159,7 +163,7 @@ def main(train_key, bus_key, station_ids, route_id_dict):
     # Initialize game/display logic
     window_size = (WIDTH, 360)
     screen = pygame.display.set_mode(window_size)
-    pygame.display.set_caption("Transit Tracker – CTA")
+    pygame.display.set_caption("Transit Tracker - CTA")
     clock = pygame.time.Clock()
     done = False
     in_open_animation = True
