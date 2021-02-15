@@ -186,6 +186,7 @@ def main(train_key, bus_key, station_ids, route_id_dict):
     next_arrivals = []
 
     pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+    pygame.mouse.set_visible(False)
 
     while not done:
         # handle events
@@ -195,8 +196,10 @@ def main(train_key, bus_key, station_ids, route_id_dict):
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_f:
                     pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+                    pygame.mouse.set_visible(False)
                 elif event.key == pygame.K_ESCAPE:
                     pygame.display.set_mode(window_size)
+                    pygame.mouse.set_visible(True)
                 elif event.key == pygame.K_q:
                     done = True
 
