@@ -185,6 +185,8 @@ def main(train_key, bus_key, station_ids, route_id_dict):
     arrivals = load_arrivals(TRAIN_KEY, BUS_KEY, STATION_IDS, ROUTE_ID_DICT)
     next_arrivals = []
 
+    pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+
     while not done:
         # handle events
         for event in pygame.event.get():
