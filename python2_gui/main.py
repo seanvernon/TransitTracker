@@ -28,7 +28,7 @@ def bus_arrivals(route, stop, key):
         destination = eta[9].text
         pred_t = convert_timestamp(eta[0].text)
         arr_t = convert_timestamp(eta[10].text)
-        wait_time = round((arr_t - pred_t).seconds / 60)
+        wait_time = int(round((arr_t - pred_t).seconds / 60))
         arr_lst.append(BusArrival(line, direction, destination, wait_time))
     return arr_lst
 
@@ -53,8 +53,10 @@ def train_arrivals(station, key):
         destination = eta[7].text
         pred_t = convert_timestamp(eta[9].text)
         arr_t = convert_timestamp(eta[10].text)
-        wait_time = round((arr_t - pred_t).seconds / 60)
-        arr_lst.append(TrainArrival(line, vin, destination, wait_time))
+        wait_time = int(round((arr_t - pred_t).seconds / 60))
+        arr = TrainArrival(line, vin, destination, wait_time)
+        if arr not in arr_lst:
+            arr_lst.append(arr)
     return arr_lst
 
 def convert_timestamp(api_ts):
@@ -200,8 +202,11 @@ def main(train_key, bus_key, station_ids, route_id_dict):
 
         # if a minute has passed, check for new arrivals
         if now - last_pull_time > 60000:
-            next_arrivals = load_arrivals(TRAIN_KEY, BUS_KEY, STATION_IDS, ROUTE_ID_DICT)
-            last_pull_time = now
+            try:
+                next_arrivals = load_arrivals(TRAIN_KEY, BUS_KEY, STATION_IDS, ROUTE_ID_DICT)
+                last_pull_time = now
+            except IOError:
+                continue
 
         # Code to do the open animation
         if in_open_animation:

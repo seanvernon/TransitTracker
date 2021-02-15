@@ -12,3 +12,7 @@ class TrainArrival:
 
     def info_string(self):
         return self.line+" Line #"+self.vin+" to"
+
+    def __eq__(self, other):
+        assert type(self) == type(other)
+        return (self.line == other.line) and (self.vin == other.vin)  
